@@ -43,7 +43,6 @@ public class PlayerController : MonoBehaviour
 
         if (direction.x != 0 || direction.z != 0)
         {
-            anim.SetBool("Walk", true);
             //if (!characterSounds.isPlaying && isGrounded)
             //{
             //    characterSounds.Play();
@@ -51,7 +50,6 @@ public class PlayerController : MonoBehaviour
         }
         if (direction.x == 0 && direction.z == 0)
         {
-            anim.SetBool("Walk", false);
             //characterSounds.Stop();
         }
 
@@ -61,7 +59,6 @@ public class PlayerController : MonoBehaviour
             isGrounded = false;
             //characterSounds.Stop();
             //AudioSource.PlayClipAtPoint(jump, transform.position);
-            anim.SetBool("SprintJump", true);
         }
 
         if (Input.GetKey(KeyCode.LeftShift))
@@ -80,9 +77,6 @@ public class PlayerController : MonoBehaviour
         {
             stamina += Time.deltaTime;
             currentSpeed = movementSpeed;
-            anim.SetBool("Walk", false);
-            anim.SetBool("SprintJump", false);
-            anim.SetBool("SprintSlide", true);
         }
         if (stamina > 5f)
         {
@@ -91,11 +85,16 @@ public class PlayerController : MonoBehaviour
         else if (stamina < 0)
         {
             stamina = 0;
-            anim.SetBool("Walk", true);
-            anim.SetBool("SprintJump", false);
-            anim.SetBool("SprintSlide", false);
+            
         }
 
+        checkAnimation();
+    }
+
+   private void checkAnimation()
+    {
+        anim.SetBool("Walk", currentSpeed == movementSpeed && (direction.x != 0 || direction.z != 0));
+        anim.SetBool("SprintSlide", currentSpeed == shiftSpeed);
     }
    
 
