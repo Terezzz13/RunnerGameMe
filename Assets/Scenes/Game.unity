@@ -574,7 +574,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 916103731}
-  mouseSense: 1
+  mouseSense: 1.103
   lookUp: -15
   lookDown: 20
 --- !u!1660057539 &9223372036854775807
