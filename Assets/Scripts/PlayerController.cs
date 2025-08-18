@@ -109,6 +109,9 @@ public class PlayerController : MonoBehaviour
     }
     private void OnTriggerEnter(Collider other)
     {
-                
+        if (other.gameObject.tag == "Finish")
+        {
+            print("Ало,просыпаемся,тебе кошмар сниться?");
+        }
     }
 }
