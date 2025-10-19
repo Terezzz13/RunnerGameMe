@@ -14,7 +14,7 @@ public class GameManager : MonoBehaviour
 
     private void DetermineWinPoint()
     {
-        int index = Random.Range(0, WinObjects.Count);
-        WinObjects[index].SetActive(true);
+        int ind = Random.Range(0, WinObjects.Count);
+        WinObjects[ind].SetActive(true);
     }
 }
